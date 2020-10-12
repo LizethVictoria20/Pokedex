@@ -11,7 +11,10 @@ const useInitialState = (API) => {
         data.results.map((item) => {
           fetch(item.url)
             .then((response) => response.json())
-            .then((data) => setResult(data.sprites.front_default))
+            .then((data) => {
+              const myVar = data.sprites.front_default
+              setResult(myVar)
+            })
           // .then((allpokemon) => arr.push(allpokemon));
           //console.log(allpokemon)
         }),

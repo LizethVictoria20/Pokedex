@@ -23,9 +23,7 @@ const App = () => {
 
       <Categories title='Trends'>
         <Carousel>
-          {
-            console.log(initialState)
-          }
+
         </Carousel>
       </Categories>
       <Footer />
