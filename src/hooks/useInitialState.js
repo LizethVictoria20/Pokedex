@@ -7,7 +7,7 @@ const useInitialState = (API) => {
   useEffect(() => {
     fetch(API)
       .then((response) => response.json())
-      .then((data) => setResult(
+      .then((data) =>
         data.results.map((item) => {
           fetch(item.url)
             .then((response) => response.json())
@@ -18,7 +18,7 @@ const useInitialState = (API) => {
           // .then((allpokemon) => arr.push(allpokemon));
           //console.log(allpokemon)
         }),
-      ));
+      );
   }, []);
   return result;
 }
