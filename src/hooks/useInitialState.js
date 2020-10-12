@@ -1,13 +1,23 @@
 import { useState, useEffect } from 'react';
 
 const useInitialState = (API) => {
-  const [videos, setVideos] = useState({ mylist: [], trends: [], originals: [] });
+  const [result, setResult] = useState({ sprites: [] });
+  const arr = [];
+
   useEffect(() => {
     fetch(API)
-      .then(response => response.json())
-      .then(data => setVideos(data))
+      .then((response) => response.json())
+      .then((data) => setResult(
+        data.results.map((item) => {
+          fetch(item.url)
+            .then((response) => response.json())
+            .then((data) => setResult(data.sprites.front_default))
+          // .then((allpokemon) => arr.push(allpokemon));
+          //console.log(allpokemon)
+        }),
+      ));
   }, []);
-  return videos;
+  return result;
 }
 
 export default useInitialState;

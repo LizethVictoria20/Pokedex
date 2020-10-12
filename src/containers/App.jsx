@@ -9,38 +9,27 @@ import Footer from '../components/Footer';
 
 import useInitialState from '../hooks/useInitialState'
 
-const API = 'http://localhost:3000/initialState'
+const API = 'https://pokeapi.co/api/v2/pokemon/?limit=2'
 
-export const App = () => {
+const App = () => {
+
   const initialState = useInitialState(API)
+
+
   return initialState.length === 0 ? <h1>Loading...</h1> : (
-    <div>
+    < div >
       <Header />
       <Search />
 
       <Categories title='Trends'>
         <Carousel>
           {
-            initialState.trends.map(
-              item => <CarouselItem key={item.id} {...item} />
-            )
+            console.log(initialState)
           }
         </Carousel>
       </Categories>
-
-      <Categories title='originals'>
-        <Carousel>
-          {
-            initialState.originals.map(
-              item => <CarouselItem key={item.id} {...item} />
-            )
-          }
-        </Carousel>
-      </Categories>
-
       <Footer />
-    </div>
+    </div >
   )
 }
-
 export default App;
